@@ -1,12 +1,21 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\CameraController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Enemy.cs">
     <Files>
-      <File FileName="Assets\Scripts\Node.cs" Line="33" Column="75" />
-      <File FileName="Assets\Scripts\Turret.cs" Line="64" Column="50" />
-      <File FileName="Assets\Scripts\Bullet.cs" Line="40" Column="1" />
-      <File FileName="Assets\Scripts\BuildManager.cs" Line="21" Column="40" />
-      <File FileName="Assets\Scripts\CameraController.cs" Line="41" Column="44" />
+      <File FileName="Assets\Scripts\Node.cs" Line="34" Column="46" />
+      <File FileName="Assets\Scripts\Turret.cs" Line="72" Column="27" />
+      <File FileName="Assets\Scripts\Bullet.cs" Line="60" Column="4" />
+      <File FileName="Assets\Scripts\BuildManager.cs" Line="51" Column="3" />
+      <File FileName="Assets\Scripts\WaveCountDownTimer.cs" Line="4" Column="32" />
+      <File FileName="Assets\Scripts\Shop.cs" Line="21" Column="52" />
+      <File FileName="Assets\Scripts\ShopUI.cs" Line="47" Column="47" />
+      <File FileName="Assets\Scripts\TurretBlueprint.cs" Line="4" Column="1" />
+      <File FileName="Assets\Scripts\PlayerStats.cs" Line="15" Column="22" />
+      <File FileName="Assets\Scripts\WaveSpawner.cs" Line="23" Column="68" />
+      <File FileName="Assets\Scripts\MoneyUI.cs" Line="10" Column="22" />
+      <File FileName="Assets\Scripts\LivesUI.cs" Line="10" Column="48" />
+      <File FileName="Assets\Scripts\Enemy.cs" Line="32" Column="25" />
+      <File FileName="Assets\Scripts\GameManager.cs" Line="11" Column="11" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
