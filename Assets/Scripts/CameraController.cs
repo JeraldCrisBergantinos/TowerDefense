@@ -10,6 +10,11 @@ public class CameraController : MonoBehaviour {
 	public float maxY = 80f;
 	
 	private bool doMovement = true;
+	private Vector3 startPosition;
+	
+	void Start() {
+		startPosition = transform.position;
+	}
 	
 	// Update is called once per frame
 	void Update () {
@@ -21,16 +26,21 @@ public class CameraController : MonoBehaviour {
 			return;
 		}
 		
+		if ( Input.GetKey(KeyCode.R) ) {
+			transform.position = startPosition;
+			return;
+		}
+		
 		if ( Input.GetKey(KeyCode.W) || Input.mousePosition.y >= Screen.height - panBorderThickness ) {
 			transform.Translate( Vector3.forward * panSpeed * Time.deltaTime, Space.World );
 		}
-		else if ( Input.GetKey(KeyCode.S) || Input.mousePosition.y <= panBorderThickness ) {
+		if ( Input.GetKey(KeyCode.S) || Input.mousePosition.y <= panBorderThickness ) {
 			transform.Translate( Vector3.back * panSpeed * Time.deltaTime, Space.World );
 		}
-		else if ( Input.GetKey(KeyCode.A) || Input.mousePosition.x <= panBorderThickness ) {
+		if ( Input.GetKey(KeyCode.A) || Input.mousePosition.x <= panBorderThickness ) {
 			transform.Translate( Vector3.left * panSpeed * Time.deltaTime, Space.World );
 		}
-		else if ( Input.GetKey(KeyCode.D) || Input.mousePosition.x >= Screen.width - panBorderThickness ) {
+		if ( Input.GetKey(KeyCode.D) || Input.mousePosition.x >= Screen.width - panBorderThickness ) {
 			transform.Translate( Vector3.right * panSpeed * Time.deltaTime, Space.World );
 		}
 		

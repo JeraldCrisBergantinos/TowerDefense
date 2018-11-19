@@ -3,20 +3,36 @@ using UnityEngine;
 public class Node : MonoBehaviour {
 	
 	public Color hoverColor;
+	public Color notEnoughMoneyColor;
 	public Vector3 positionOffset;
+	public GameObject turret;
 	
 	private Renderer rend;
 	private Color startColor;
 	
-	private GameObject turret;
+	BuildManager buildManager;
 	
 	void Start() {
 		rend = GetComponent<Renderer>();
 		startColor = rend.material.color;
+		buildManager = BuildManager.instance;
+	}
+	
+	public Vector3 GetBuildPosition() {
+		return transform.position + positionOffset;
 	}
 
 	void OnMouseEnter() {
-		rend.material.color = hoverColor;
+		if ( !buildManager.CanBuild ) {
+			return;
+		}
+		
+		if ( buildManager.HasMoney ) {
+			rend.material.color = hoverColor;
+		}
+		else {
+			rend.material.color = notEnoughMoneyColor;
+		}
 	}
 	
 	void OnMouseExit() {
@@ -24,12 +40,15 @@ public class Node : MonoBehaviour {
 	}
 	
 	void OnMouseDown() {
+		if ( !buildManager.CanBuild ) {
+			return;
+		}
+		
 		if ( turret != null ) {
 			Debug.Log( "Can't build here! - TODO: Display on screen." );
 			return;
 		}
 		
-		GameObject turretToBuild = BuildManager.instance.GetTurretToBuild();
-		turret = Instantiate( turretToBuild, transform.position + positionOffset, transform.rotation ) as GameObject;
+		buildManager.BuildTurretOn( this );
 	}
 }
