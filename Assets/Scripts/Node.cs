@@ -23,7 +23,11 @@ public class Node : MonoBehaviour {
 	}
 
 	void OnMouseEnter() {
-		if ( !buildManager.CanBuild ) {
+		if ( turret != null ) {
+			rend.material.color = hoverColor;
+			return;
+		}
+		else if ( !buildManager.CanBuild ) {
 			return;
 		}
 		
@@ -40,12 +44,15 @@ public class Node : MonoBehaviour {
 	}
 	
 	void OnMouseDown() {
-		if ( !buildManager.CanBuild ) {
+		if ( turret != null ) {
+			buildManager.SelectNode( this );
 			return;
 		}
+		else {
+			buildManager.DeselectNode();
+		}
 		
-		if ( turret != null ) {
-			Debug.Log( "Can't build here! - TODO: Display on screen." );
+		if ( !buildManager.CanBuild ) {
 			return;
 		}
 		

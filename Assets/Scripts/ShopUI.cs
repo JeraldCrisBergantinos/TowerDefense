@@ -3,47 +3,102 @@ using UnityEngine;
 [ExecuteInEditMode]
 public class ShopUI : MonoBehaviour {
 	
-	public Rect standardTurretItemRect;
-	public Texture standardTurretIcon;
+	[System.Serializable]
+	public class Item {
+		public Texture icon;
+		public string price;
+	}
 	
-	public Rect missileLauncherItemRect;
-	public Texture missileLauncherIcon;
+	public Item[] turretItems;
+	public Item[] nodeItems;
 	
-	public Rect turretPriceRect;
-	public GUIStyle turretPriceStyle;
+	public Rect itemRect;
+	public Rect priceRect;
+	public GUIStyle priceStyle;
 	
 	public float iconOffset = 5f;
-	
 	public Shop shop;
+	
+	BuildManager buildManager;
+	
+	void Start() {
+		buildManager = BuildManager.instance;
+	}
 
 	void OnGUI () {
-		DisplayStandardTurretItem();
-		DisplayMissileLauncherItem();
+		DisplayItems();
 	}
 	
-	void DisplayStandardTurretItem() {
-		float x = Screen.width * 0.5f - iconOffset * 0.5f - standardTurretItemRect.width;
-		float y = Screen.height - standardTurretItemRect.height;
-		Rect rect = new Rect( x, y, standardTurretItemRect.width, standardTurretItemRect.height );
-		if ( GUI.Button( rect, standardTurretIcon ) )
-			shop.SelectStandardTurret();
-		
-		x = x + (standardTurretItemRect.width - turretPriceRect.width) * 0.5f;
-		y = Screen.height - turretPriceRect.height;
-		rect = new Rect( x, y, turretPriceRect.width, turretPriceRect.height );
-		GUI.Label( rect, "$100", turretPriceStyle );
+	void DisplayItems() {
+		if ( !buildManager.CanBuild && !buildManager.HasNode )
+			DisplayTurretItems();
+		else if ( buildManager.CanBuild )
+			DisplayTurretItems();
+		else if ( buildManager.HasNode )
+			DisplayNodeItems();
 	}
 	
-	void DisplayMissileLauncherItem() {
-		float x = Screen.width * 0.5f + iconOffset * 0.5f;
-		float y = Screen.height - missileLauncherItemRect.height;
-		Rect rect = new Rect( x, y, missileLauncherItemRect.width, missileLauncherItemRect.height );
-		if ( GUI.Button( rect, missileLauncherIcon ) )
-			shop.SelectMissileLauncher();
+	void DisplayItems( Item[] items, bool turretOnly ) {
+		for (int i = 0; i < items.Length; i++) {
+			float startX = ( Screen.width - itemRect.width * items.Length - iconOffset * ( items.Length - 1 ) ) * 0.5f;
+			float adjustX = ( itemRect.width + iconOffset ) * i;
+			float x = startX + adjustX;
+			float y = Screen.height - itemRect.height;
+			Rect rect = new Rect( x, y, itemRect.width, itemRect.height );
+			if ( GUI.Button( rect, items[i].icon ) )
+				SelectItem( i, turretOnly );
+			
+			x = x + (itemRect.width - priceRect.width) * 0.5f;
+			y = Screen.height - priceRect.height;
+			rect = new Rect( x, y, priceRect.width, priceRect.height );
+			GUI.Label( rect, items[i].price, priceStyle );
+		}
+	}
+	
+	void DisplayTurretItems() {
+		DisplayItems( turretItems, true );
+	}
+	
+	void DisplayNodeItems() {
+		DisplayItems( nodeItems, false );
+	}
+	
+	void SelectItem( int i, bool turretOnly ) {
+		if ( turretOnly ) {
+			SelectTurretItem(i);
+		}
+		else {
+			SelectNodeItem(i);
+		}
+	}
 		
-		x = x + (missileLauncherItemRect.width - turretPriceRect.width) * 0.5f;
-		y = Screen.height - turretPriceRect.height;
-		rect = new Rect( x, y, turretPriceRect.width, turretPriceRect.height );
-		GUI.Label( rect, "$250", turretPriceStyle );
+	void SelectTurretItem( int i ) {
+		switch (i) {
+			case 0:
+				shop.SelectStandardTurret();
+				break;
+			case 1:
+				shop.SelectMissileLauncher();
+				break;
+			case 2:
+				shop.SelectLaserBeamer();
+				break;
+			default:
+			break;
+		}
+	}
+		
+	void SelectNodeItem( int i ) {
+		switch (i) {
+			default:
+			break;
+		}
+	}
+	
+	bool CanDisplayItem {
+		get {
+			return ( ( buildManager.CanBuild && !buildManager.HasNode ) ||
+				( !buildManager.CanBuild && buildManager.HasNode ) );
+		}
 	}
 }

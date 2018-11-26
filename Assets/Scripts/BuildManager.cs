@@ -4,12 +4,11 @@ public class BuildManager : MonoBehaviour {
 	
 	public static BuildManager instance;
 	
-	public GameObject standardTurretPrefab;
-	public GameObject missileLauncherPrefab;
-	
 	public GameObject buildEffect;
+	public NodeUI nodeUI;
 	
 	private TurretBlueprint turretToBuild;
+	private Node selectedNode;
 	
 	void Awake() {
 		if ( instance != null ) {
@@ -23,6 +22,12 @@ public class BuildManager : MonoBehaviour {
 	public bool CanBuild {
 		get {
 			return turretToBuild != null;
+		}
+	}
+	
+	public bool HasNode {
+		get {
+			return selectedNode != null;
 		}
 	}
 	
@@ -52,6 +57,22 @@ public class BuildManager : MonoBehaviour {
 	
 	public void SelectTurretToBuild( TurretBlueprint turret ) {
 		turretToBuild = turret;
+		DeselectNode();
 	}
 	
+	public void SelectNode( Node node ) {
+		if ( selectedNode == node ) {
+			DeselectNode();
+			return;
+		}
+		
+		selectedNode = node;
+		turretToBuild = null;
+		nodeUI.SetTarget( node );
+	}
+	
+	public void DeselectNode() {
+		selectedNode = null;
+		nodeUI.Hide();
+	}
 }
