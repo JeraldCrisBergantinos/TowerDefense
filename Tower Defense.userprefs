@@ -1,21 +1,19 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Enemy.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\ShopUI.cs">
     <Files>
-      <File FileName="Assets\Scripts\Node.cs" Line="34" Column="46" />
-      <File FileName="Assets\Scripts\Turret.cs" Line="72" Column="27" />
-      <File FileName="Assets\Scripts\Bullet.cs" Line="60" Column="4" />
-      <File FileName="Assets\Scripts\BuildManager.cs" Line="51" Column="3" />
-      <File FileName="Assets\Scripts\WaveCountDownTimer.cs" Line="4" Column="32" />
-      <File FileName="Assets\Scripts\Shop.cs" Line="21" Column="52" />
-      <File FileName="Assets\Scripts\ShopUI.cs" Line="47" Column="47" />
-      <File FileName="Assets\Scripts\TurretBlueprint.cs" Line="4" Column="1" />
-      <File FileName="Assets\Scripts\PlayerStats.cs" Line="15" Column="22" />
-      <File FileName="Assets\Scripts\WaveSpawner.cs" Line="23" Column="68" />
-      <File FileName="Assets\Scripts\MoneyUI.cs" Line="10" Column="22" />
-      <File FileName="Assets\Scripts\LivesUI.cs" Line="10" Column="48" />
-      <File FileName="Assets\Scripts\Enemy.cs" Line="32" Column="25" />
-      <File FileName="Assets\Scripts\GameManager.cs" Line="11" Column="11" />
+      <File FileName="Assets\Scripts\ShopUI.cs" Line="33" Column="1" />
+      <File FileName="Assets\Scripts\Node.cs" Line="28" Column="11" />
+      <File FileName="Assets\Scripts\GameOverUI.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\GameOver.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\GameManager.cs" Line="18" Column="4" />
+      <File FileName="Assets\Scripts\CameraController.cs" Line="23" Column="11" />
+      <File FileName="Assets\Scripts\PlayerStats.cs" Line="12" Column="16" />
+      <File FileName="Assets\Scripts\WaveSpawner.cs" Line="28" Column="23" />
+      <File FileName="Assets\Scripts\GameOverAnimation.cs" Line="62" Column="4" />
+      <File FileName="Assets\Scripts\BuildManager.cs" Line="74" Column="14" />
+      <File FileName="Assets\Scripts\Shop.cs" Line="15" Column="14" />
+      <File FileName="Assets\Scripts\NodeUI.cs" Line="20" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
