@@ -1,12 +1,16 @@
 using UnityEngine;
 
-[ExecuteInEditMode]
 public class ShopUI : MonoBehaviour {
 	
 	[System.Serializable]
 	public class Item {
 		public Texture icon;
 		public string price;
+		public bool interactive = true;
+		public Texture disabledIcon;
+		
+		[HideInInspector]
+		public Texture startIcon;
 	}
 	
 	public Item[] turretItems;
@@ -18,11 +22,18 @@ public class ShopUI : MonoBehaviour {
 	
 	public float iconOffset = 5f;
 	public Shop shop;
+	public NodeUI nodeUI;
+	
+	public int upgradeButtonIndex = 0;
 	
 	BuildManager buildManager;
 	
 	void Start() {
 		buildManager = BuildManager.instance;
+		
+		foreach (Item item in nodeItems) {
+			item.startIcon = item.icon;
+		}
 	}
 
 	void OnGUI () {
@@ -45,8 +56,10 @@ public class ShopUI : MonoBehaviour {
 			float x = startX + adjustX;
 			float y = Screen.height - itemRect.height;
 			Rect rect = new Rect( x, y, itemRect.width, itemRect.height );
-			if ( GUI.Button( rect, items[i].icon ) )
-				SelectItem( i, turretOnly );
+			if ( GUI.Button( rect, items[i].icon ) ) {
+				if ( items[i].interactive )
+					SelectItem( i, turretOnly );
+			}
 			
 			x = x + (itemRect.width - priceRect.width) * 0.5f;
 			y = Screen.height - priceRect.height;
@@ -60,6 +73,17 @@ public class ShopUI : MonoBehaviour {
 	}
 	
 	void DisplayNodeItems() {
+		if ( nodeUI.TargetIsUpgraded() ) {
+			nodeItems[upgradeButtonIndex].price = "DONE";
+			nodeItems[upgradeButtonIndex].interactive = false;
+			nodeItems[upgradeButtonIndex].icon = nodeItems[upgradeButtonIndex].disabledIcon;
+		}
+		else {
+			nodeItems[upgradeButtonIndex].price = "$" + nodeUI.upgradeCost.ToString();
+			nodeItems[upgradeButtonIndex].interactive = true;
+			nodeItems[upgradeButtonIndex].icon = nodeItems[upgradeButtonIndex].startIcon;
+		}
+		
 		DisplayItems( nodeItems, false );
 	}
 	
@@ -90,8 +114,11 @@ public class ShopUI : MonoBehaviour {
 		
 	void SelectNodeItem( int i ) {
 		switch (i) {
+			case 0:
+				nodeUI.Upgrade();
+				break;
 			default:
-			break;
+				break;
 		}
 	}
 	
