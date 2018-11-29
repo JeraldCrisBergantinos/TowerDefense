@@ -2,18 +2,22 @@
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\ShopUI.cs">
     <Files>
-      <File FileName="Assets\Scripts\ShopUI.cs" Line="33" Column="1" />
-      <File FileName="Assets\Scripts\Node.cs" Line="28" Column="11" />
-      <File FileName="Assets\Scripts\GameOverUI.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\ShopUI.cs" Line="35" Column="31" />
+      <File FileName="Assets\Scripts\Node.cs" Line="12" Column="19" />
+      <File FileName="Assets\Scripts\GameOverUI.cs" Line="3" Column="1" />
       <File FileName="Assets\Scripts\GameOver.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\GameManager.cs" Line="18" Column="4" />
       <File FileName="Assets\Scripts\CameraController.cs" Line="23" Column="11" />
       <File FileName="Assets\Scripts\PlayerStats.cs" Line="12" Column="16" />
       <File FileName="Assets\Scripts\WaveSpawner.cs" Line="28" Column="23" />
       <File FileName="Assets\Scripts\GameOverAnimation.cs" Line="62" Column="4" />
-      <File FileName="Assets\Scripts\BuildManager.cs" Line="74" Column="14" />
-      <File FileName="Assets\Scripts\Shop.cs" Line="15" Column="14" />
-      <File FileName="Assets\Scripts\NodeUI.cs" Line="20" Column="1" />
+      <File FileName="Assets\Scripts\BuildManager.cs" Line="53" Column="10" />
+      <File FileName="Assets\Scripts\Shop.cs" Line="17" Column="38" />
+      <File FileName="Assets\Scripts\NodeUI.cs" Line="30" Column="28" />
+      <File FileName="Assets\Scripts\CrossHair.cs" Line="8" Column="35" />
+      <File FileName="Assets\Scripts\TurretBlueprint.cs" Line="13" Column="1" />
+      <File FileName="Assets\Scripts\WaveCountDownTimer.cs" Line="2" Column="1" />
+      <File FileName="Assets\Scripts\Turret.cs" Line="7" Column="35" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
